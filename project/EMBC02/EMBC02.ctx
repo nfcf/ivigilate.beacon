@@ -1,0 +1,85 @@
+
+<Debug>
+	<Views/>
+	<BookMarks>
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+																																																												
+	</BookMarks>
+	<Grep>
+		<GrepIncludeSub>yes</GrepIncludeSub>
+		<GrepMatchCase>no</GrepMatchCase>
+		<GrepMatchWhole>no</GrepMatchWhole>
+		<GrepRegExp>no</GrepRegExp>
+		<GrepReplaceMode>no</GrepReplaceMode>
+		<GrepFileTypes>
+			<GrepFileTypesValue>*.c;*.h</GrepFileTypesValue>
+			<GrepFileType>*.c;*.h</GrepFileType>
+																																																																																																				
+		</GrepFileTypes>
+		<GrepFindWhat>
+			<GrepFindWhatValue/>
+																																																																																																				
+		</GrepFindWhat>
+		<GrepFindWhere>
+			<GrepFindWhereValue>Application Files</GrepFindWhereValue>
+			<GrepPathStr>Application Files</GrepPathStr>
+			<GrepPathStr>Application Path</GrepPathStr>
+			<GrepPathStr>Project Files</GrepPathStr>
+																																																																																																				
+		</GrepFindWhere>
+		<GrepReplaceWhat>
+			<GrepReplaceWhatValue/>
+																																																																																																				
+		</GrepReplaceWhat>
+																																																												
+	</Grep>
+	<FindStrings/>
+	<ReplaceStrings/>
+	<EMBC02>
+		<CodeView TopRow="14136" Focus="14144" >
+			<CodeReport>
+				<0>112</0>
+				<1>65</1>
+				<2>142</2>
+				<3>195</3>
+				<4>35</4>
+				<5>75</5>
+			</CodeReport>
+		</CodeView>
+	</EMBC02>
+	<Flags>
+		<Report>
+			<Def Header="FlagReport" NbCol="9" >
+				<Col Type="PT_BOOL" Header="Check" sizeCache="18" AutoSize="0" Edit="1" Sortable="1" Icon="C:\Raisonance\Ride\Config\Resources\check.bmp" />
+				<Col Type="PT_STRING" Header="Kind" sizeCache="DDDDDDDDDDD" AutoSize="1" Edit="0" Sortable="1" />
+				<Col Type="PT_STRING" Header="KindID" sizeCache="DD" AutoSize="1" Edit="0" Sortable="1" Visible="0" />
+				<Col Type="PT_STRING" Header="Space" sizeCache="DDDDDD" AutoSize="1" Edit="0" Sortable="1" />
+				<Col Type="PT_STRING" Header="SpaceID" sizeCache="DD" AutoSize="0" Edit="0" Sortable="0" Visible="0" />
+				<Col Type="PT_STRING" Header="Line" sizeCache="DDDDDDDDD" AutoSize="1" Edit="0" Sortable="1" Visible="1" />
+				<Col Type="PT_STRING" Header="File" sizeCache="DDDDDDDDDDDDDDDDDDDD" AutoSize="1" Edit="0" Sortable="1" Visible="1" />
+				<Col Type="PT_STRING" Header="Path" sizeCache="DDDDDDDDDDDDDDDDDDDD" AutoSize="1" Edit="0" Sortable="0" Visible="0" />
+				<Col Type="PT_STRING" Header="Condition" sizeCache="DDDDDDDDDDDDDDDDDDDDDDDD" AutoSize="1" Edit="0" Sortable="0" />
+				<Col Type="PT_STRING" Header="Condexpr" sizeCache="DD" AutoSize="1" Edit="0" Sortable="0" Visible="0" />
+				<Col Type="PT_STRING" Header="Condcount" sizeCache="DD" AutoSize="1" Edit="0" Sortable="0" Visible="0" />
+			</Def>
+			<Rows>
+				<Row Check="True" Kind="Breakpoint" KindID="0" Space="CODE" SpaceID="0" Condition="" Line="L:790" File="main.c" Path="C:\EMBCxx_300\EMBCxx_beacon\src\main.c" />
+				<Row Check="True" Kind="Breakpoint" KindID="0" Space="CODE" SpaceID="0" Condition="" Line="L:802" File="main.c" Path="C:\EMBCxx_300\EMBCxx_beacon\src\main.c" />
+				<Row Check="True" Kind="Breakpoint" KindID="0" Space="CODE" SpaceID="0" Condition="" Line="L:808" File="main.c" Path="C:\EMBCxx_300\EMBCxx_beacon\src\main.c" />
+				<Row Check="True" Kind="Breakpoint" KindID="0" Space="CODE" SpaceID="0" Condition="" Line="L:1733" File="main.c" Path="C:\EMBCxx_300\EMBCxx_beacon\src\main.c" />
+				<Row Check="True" Kind="Breakpoint" KindID="0" Space="CODE" SpaceID="0" Condition="" Line="L:1752" File="main.c" Path="C:\EMBCxx_300\EMBCxx_beacon\src\main.c" />
+				<Row Check="True" Kind="Breakpoint" KindID="0" Space="CODE" SpaceID="0" Condition="" Line="L:1766" File="main.c" Path="C:\EMBCxx_300\EMBCxx_beacon\src\main.c" />
+				<Row Check="True" Kind="Breakpoint" KindID="0" Space="CODE" SpaceID="0" Condition="" Line="L:1602" File="main.c" Path="C:\EMBCxx_300\EMBCxx_beacon\src\main.c" />
+			</Rows>
+		</Report>
+	</Flags>
+</Debug>

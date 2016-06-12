@@ -1,0 +1,4 @@
+
+<Project Header="Project 'EMBC02'" Path=".\EMBC02.rprj" Project="Yes" OutputFile="" sate="96" ActiveApp="EMBC02" >
+	<ApplicationBuild Header="EMBC02" Extern=".\EMBC02.rapp" Path=".\EMBC02.rapp" OutputFile=".\build\EMBC02.elf" sate="98" Config="EMBC02" />
+</Project>
