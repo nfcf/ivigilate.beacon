@@ -375,8 +375,8 @@ void BMA222E_EnterTapDetectionMode(void)
    fI2cSendData(BMA222E_INT_MAP_INT1_S_TAP,
                 BMA222E_SLAVE_ADDR, BMA222E_REG_INT_MAP_0);
 
-    // Low power mode (4ms)
-    fI2cSendData(BMA222E_PMU_LPW_LOWPOWER_EN | BMA222E_PMU_LPW_SLEEP_DUR_4MS,
+   // Low power mode (4ms)
+   fI2cSendData(BMA222E_PMU_LPW_LOWPOWER_EN | BMA222E_PMU_LPW_SLEEP_DUR_4MS,
                  BMA222E_SLAVE_ADDR, BMA222E_REG_PMU_LPW);
 
    // Clear interrupts and latch interrupts for 1ms.

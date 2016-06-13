@@ -264,6 +264,8 @@ const UINT8 maxPktCount[EM_RF_POWER_LEVEL_MAX_INDEX+1] = {42, 42, 41, 40, 35, 33
 // Forward declarations
 void GoToBeaconFailedMode(void);
 
+UINT8 panicMode = 0;
+UINT8 panicModeLedsHelperCounter = 0;
 
 /**
  ******************************************************************************
@@ -740,7 +742,8 @@ void InitParams(void)
    advModes = AdvParams.advModes[0];
    advMachines = AdvParams.advMachines[0] & ADVMACHINES_MASK;
    if ((advMachines != ADVMACHINES_CUSTOM) &&
-       (advMachines != ADVMACHINES_PRODUCT)   )
+       (advMachines != ADVMACHINES_PRODUCT) &&
+       (advMachines != ADVMACHINES_IVIGILATE))
    {
       // Unknown state machine
       GoToBeaconFailedMode();
@@ -766,8 +769,8 @@ void InitParams(void)
 *******************************************************************************/
 void ProcessButton(void)
 {
-   // Once sticky is set, btn is ignored
-   if (!(stickyMode))
+   // Once sticky is set, btn is ignored - ivigilate mode doesn't set sticky
+   if (!stickyMode)
    {
       if (BTN_IsPressed())
       {
@@ -777,17 +780,26 @@ void ProcessButton(void)
             AckNextModeWithLED();
          }
          // If button is held, set the sticky bit which locks this mode permanently.
+         // OR if in ivigilate mode, clear the panic flag instead.
          // IMPORTANT: Clear switchPressTime to allow sleep and beaconing to resume
          // even if the switch is jumpered
          if (++switchPressTime >= LONGPRESSTIME)
          {
             switchPressTime = 0;
             DisableGrnLED();
+            DisableRedLED();
             // Lock (and acknowledge) the mode only if beaconing is not completely OFF
             if (beaconMode & (ADVMODES_BEACONS_MASK))
             {
-               stickyMode = 1;
-               AckStickyStateWithLED();
+               if (advMachines == ADVMACHINES_IVIGILATE) 
+               {
+                   panicMode = 0;
+               }
+               else 
+               {
+                   stickyMode = 1;
+                   AckStickyStateWithLED();
+               }
             }
          }
       }
@@ -801,6 +813,10 @@ void ProcessButton(void)
                switchPress = (switchPress + 1) & 0x0FFF;    // running count. never clear.
                NextMode();
                PRODUCT_CHANGE_STATE(beaconModeIdx, beaconMode);
+            
+               if (advMachines == ADVMACHINES_IVIGILATE) {
+                   panicMode = 1;
+               }
             }
             switchPressTime = 0;
             // LEDs (if present) were lit to acknowledge button press.  Turn off now.
@@ -1548,30 +1564,34 @@ void UpdateDynamicPacketData(const UINT8 powerIndex, const UINT8 batteryLevel)
    }
 
    // This defines what goes in the open event counter field
-   switch (eventType)
+   if (advMachines != ADVMACHINES_IVIGILATE)
    {
-      // UNIVERSAL CASES
+       switch (eventType)
+       {
+          // UNIVERSAL CASES
+          case EVENT_FIELD_TYPE_BUTTON_PRESS:
+             EMAdvertisingPacket.data.event_count = (EVENT_FIELD_TYPE_BUTTON_PRESS     << 12) |
+                switchPress;
+             break;
+          case EVENT_FIELD_TYPE_LOW_BATTERY:
+             EMAdvertisingPacket.data.event_count = (EVENT_FIELD_TYPE_LOW_BATTERY      << 12) |
+                0x00;
+             break;
+          case EVENT_FIELD_TYPE_RF_VCO_CAL:
+             EMAdvertisingPacket.data.event_count = (EVENT_FIELD_TYPE_RF_VCO_CAL       << 12) |
+                GetRFCal_EventCounter();
+             break;
 
-      case EVENT_FIELD_TYPE_BUTTON_PRESS:
-         EMAdvertisingPacket.data.event_count = (EVENT_FIELD_TYPE_BUTTON_PRESS     << 12) |
-            switchPress;
-         break;
-      case EVENT_FIELD_TYPE_LOW_BATTERY:
-         EMAdvertisingPacket.data.event_count = (EVENT_FIELD_TYPE_LOW_BATTERY      << 12) |
-            0x00;
-         break;
-      case EVENT_FIELD_TYPE_RF_VCO_CAL:
-         EMAdvertisingPacket.data.event_count = (EVENT_FIELD_TYPE_RF_VCO_CAL       << 12) |
-            GetRFCal_EventCounter();
-         break;
+             // CAPABILITY- and PRODUCT-DEPENDENT CASES
 
-         // CAPABILITY- and PRODUCT-DEPENDENT CASES
-
-      default:
-         EMAdvertisingPacket.data.event_count = (eventType << 12) |
-            (PRODUCT_GET_EVENT_COUNT(eventType) & 0x0FFF);
-
-
+          default:
+             EMAdvertisingPacket.data.event_count = (eventType << 12) |
+                (PRODUCT_GET_EVENT_COUNT(eventType) & 0x0FFF);
+       }
+   }
+   else
+   {
+       EMAdvertisingPacket.data.event_count = panicMode ? 0xFFFF : 0x0001;
    }
 
    #if CAPABILITY_ALT_BEACON
@@ -1759,7 +1779,7 @@ int main(void)
       // While button is pressed, no beaconing
       if (!switchPressTime)
       {
-         if (beaconing())//beaconMode & (BCNMODE_EM | BCNMODE_ID | BCNMODE_ALT))
+         if (beaconing()) //beaconMode & (BCNMODE_EM | BCNMODE_ID | BCNMODE_ALT))
          {
             // Perform Advertising
             SetupDCDC();
@@ -1778,10 +1798,26 @@ int main(void)
 
             if (PRODUCT_IS_BROADCAST_ENABLED(beaconModeIdx, beaconMode))
             {
-               
-               SendData(GetPowerFromMode(), beaconMode & RotateModeMask());
+               if (advMachines == ADVMACHINES_IVIGILATE) {
+                   SendData(GetPowerFromMode(), beaconMode); // Hack because I couldn't get the RotateModeMask to work in this case...
+               } else {
+                   SendData(GetPowerFromMode(), beaconMode & RotateModeMask());
+               }
             }
 
+            // If in panicMode, blink leds and change payload
+            if (panicMode)
+            {
+               DisableGrnLED();
+               DisableRedLED();
+               if (panicModeLedsHelperCounter == 0) {
+                  EnableGrnLED();
+               } else {
+                  EnableRedLED();
+               }   
+               panicModeLedsHelperCounter = (++panicModeLedsHelperCounter) % 2;
+            }
+        
             // Prepare data for next shipment
             UpdateDynamicPacketData(GetPowerFromMode(),
                                     GetBatteryLife(EMAdvertisingPacket.data.packet_count));

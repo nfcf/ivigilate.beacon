@@ -1,0 +1,15 @@
+[Application]
+ApplicationPath=C:\EMBCxx_300\EMBCxx_beacon\project\EMBC01\build\EMBC01.elf
+Format=ELF
+CodeOffset=0x0
+DataOffset=0x0
+LoaderTool=C816
+Target=C816
+DebugTool=EM6819-Monitor
+[Device]
+Name=EM6819F6-B300
+[Debug]
+Explore=Yes
+Startup=1
+StartupSymb=main
+ToolName=EM6819-Monitor

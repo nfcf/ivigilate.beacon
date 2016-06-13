@@ -117,10 +117,10 @@
 /**
  * @brief CONFIGURE PACKET CAPABILITIES
  */
-#define CAPABILITY_ALT_BEACON             1        // SET this to 1 to include support for AltBeacon
-#define CAPABILITY_IDDATA_BEACON          1        // SET this to 1 to include support for IDDATA
+#define CAPABILITY_ALT_BEACON             0        // SET this to 1 to include support for AltBeacon
+#define CAPABILITY_IDDATA_BEACON          0        // SET this to 1 to include support for IDDATA
 #define CAPABILITY_EMBEACON               1        // SET THIS to 1 to include support for EMBEACON
-#define CAPABILITY_EDDYSTONE              1        // SET THIS to 1 to include support for EDDYSTONE Beacons
+#define CAPABILITY_EDDYSTONE              0        // SET THIS to 1 to include support for EDDYSTONE Beacons
 
 /**
  * @brief ACCESSORY CONFIGURATION (These are fixed b hardware that's either there or not)
@@ -155,7 +155,7 @@
  * This defines the default behavior and packet types when the button is pushed.
  * Can be overriden at programming time.
  */
-#define ADVMODES_DEFAULT    (ADVMODES_STATE_PRODUCT | ADVMODES_BEACONS_MASK)
+#define ADVMODES_DEFAULT    (ADVMACHINES_IVIGILATE | ADVMODES_BEACONS_MASK)
 
 
 /* ******************************************
@@ -174,6 +174,10 @@ void   EMBC02_ChangeState(UINT8 state);
 UINT8  EMBC02_MorePacketsToCome_p(UINT8 mode);
 UINT8  EMBC02_OkToAdvertise_p(UINT8 state, UINT8 mode);
 
+void   EMBC02_IVigilate_AlwaysSameState(void);
+UINT8  EMBC02_IVigilate_AlwaysMorePacketsToCome(UINT8 mode);
+UINT8  EMBC02_IVigilate_AlwaysOkToAdvertise(UINT8 state, UINT8 mode);
+
 /**
  * @brief Define the external sensor interface for this product.
  *
@@ -184,12 +188,12 @@ UINT8  EMBC02_OkToAdvertise_p(UINT8 state, UINT8 mode);
  * return values are not identified here, but they should be.
  */
 #define PRODUCT_POWER_ON_INIT(state,mode)             EMBC02_PowerOnInit()
-#define PRODUCT_CHANGE_STATE(state,mode)              EMBC02_ChangeState(state)
+#define PRODUCT_CHANGE_STATE(state,mode)              EMBC02_IVigilate_AlwaysSameState() // EMBC02_ChangeState(state)
 #define PRODUCT_ACQUIRE_DATA(state,mode,packetCount)  // nothing do: acquisition runs in backround
 #define PRODUCT_GET_SAMPLE_VALUE(dataType)            BMA222E_MeasureX()
 #define PRODUCT_GET_EVENT_COUNT(eventType)            EMBC02_GetEventCount()
-#define PRODUCT_IS_BROADCAST_ENABLED(state,mode)      EMBC02_OkToAdvertise_p(state,mode)
-#define PRODUCT_IS_TIMER_WAKEUP_NEEDED(state,mode)    EMBC02_MorePacketsToCome_p(mode)
+#define PRODUCT_IS_BROADCAST_ENABLED(state,mode)      EMBC02_IVigilate_AlwaysOkToAdvertise(state,mode) // EMBC02_OkToAdvertise_p(state,mode)
+#define PRODUCT_IS_TIMER_WAKEUP_NEEDED(state,mode)    EMBC02_IVigilate_AlwaysMorePacketsToCome(mode) // EMBC02_MorePacketsToCome_p(mode)
 
 
 /* ******************************************

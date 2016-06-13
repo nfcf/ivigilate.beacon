@@ -190,7 +190,7 @@ typedef union
  *
  *  When customizing beacons, use AdvParams.advModes to specify which packet types to
  *  enable and which state machine (what happens when the button is pushed) to use.
- *  The default state machine is CoinStandardModes[] defined in main.c.
+ *  The default state machine is CoinStandardModes[] defined in statemachine.c.
  */
 #define ADVMODES_EMBEACON           0x01    // bit flag - TRUE-->enable sensor data adverts
 #define ADVMODES_IDDATA             0x02    // bit flag - TRUE-->enable iddata adverts
@@ -208,9 +208,7 @@ typedef union
 #define ADVMACHINES_RESERVED     0x00    // reserved for future state machine definition
 #define ADVMACHINES_CUSTOM       0x01    // Custom (simple on/off, fully customized by parameters)
 #define ADVMACHINES_PRODUCT      0x02    // Product-Specific FSM (used for Proximity FSM on COiN)
-#define ADVMACHINES_PROXIMITY    0x02    // **DEPRECATED** Refactored as ADV_STATE_PRODUCT for EMBC01
-#define ADVMACHINES_USER_DEFN    0x03    // User-defined state machine. Requires change to 
-                                         //   InitParams() & GetMode()
+#define ADVMACHINES_IVIGILATE    0x03    // User-defined state machine. Requires change to InitParams() & GetMode()
 /**
  *  @brief Sensor Data Types
  *  Values for least-significant 4 bits of a 16-bit field to define

@@ -79,8 +79,8 @@
  * The initial conditions define here also describe the fist entry in ALL state tables; by convention
  * this is the OFF state.
  */
-extern UINT16  beaconMode;//    = BCNMODE_INIT;   // state descriptor - packet/power/interval options
-extern UINT8  beaconModeIdx;// = 0;              // state table index (de facto state identifier)
+extern UINT16  beaconMode;      // state descriptor - packet/power/interval options
+extern UINT8  beaconModeIdx;    // state table index (de facto state identifier)
 /**
  * @brief During init, read AdvParams.advModes, apply sanity checks, save here for routine use.
  *
@@ -91,19 +91,19 @@ extern UINT8  beaconModeIdx;// = 0;              // state table index (de facto 
  */
 extern UINT8 advModes;
 extern UINT8 advMachines;
-UINT16 getBeaconMode(void);// { return beaconMode;}
-UINT8 getBeaconModeIdx(void);//{ return beaconModeIdx;}
+UINT16 getBeaconMode(void);
+UINT8 getBeaconModeIdx(void);
 UINT16 getAdvModes(void);
 void  setAdvModes(UINT16 modes);
 UINT8 checkAdvModes(UINT16 modes);
 UINT8* getBeaconModes(void);
-UINT8 beaconing(void);// {beaconMode & (BCNMODE_EM | BCNMODE_ID | BCNMODE_ALT);};
+UINT8 beaconing(void);
 UINT8 RotateModeMask(void);
 UINT16 GetMode(UINT8 idx);
 
 void NextMode(void);
 
-
+extern UINT8 panicMode;  // Used for ivigilate state machine only
 
 #endif
 //--------------- END OF FILE ------------------------//
