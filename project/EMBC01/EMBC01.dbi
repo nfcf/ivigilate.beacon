@@ -6,6 +6,8 @@ DataOffset=0x0
 LoaderTool=C816
 Target=C816
 DebugTool=EM6819-Monitor
+ApplicationComponents=
+MakeApplicationPath=C:\EMBCxx_300\EMBCxx_beacon\project\EMBC01\build\EMBC01.elf
 [Device]
 Name=EM6819F6-B300
 [Debug]
@@ -13,3 +15,9 @@ Explore=Yes
 Startup=1
 StartupSymb=main
 ToolName=EM6819-Monitor
+[SimFile]
+path=C:\Raisonance\Ride\sim\C816\EM6819F6-B300.sim
+[Monitoring]
+Expressions=
+NbExpr=0
+State=0

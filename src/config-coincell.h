@@ -118,7 +118,7 @@
  * @brief CONFIGURE PACKET CAPABILITIES
  */
 #define CAPABILITY_ALT_BEACON             1        // SET this to 1 to include support for AltBeacon
-#define CAPABILITY_IDDATA_BEACON          1        // SET this to 1 to include support for IDDATA
+#define CAPABILITY_IDDATA_BEACON          0        // SET this to 1 to include support for IDDATA
 #define CAPABILITY_EMBEACON               1        // SET THIS to 1 to include support for EMBEACON
 #define CAPABILITY_EDDYSTONE              1        // SET THIS to 1 to include support for EDDYSTONE Beacons
 
@@ -155,7 +155,7 @@
  * This defines the default behavior and packet types when the button is pushed.
  * Can be overriden at programming time.
  */
-#define ADVMODES_DEFAULT    (ADVMODES_STATE_PRODUCT | ADVMODES_BEACONS_MASK)
+// #define ADVMODES_DEFAULT    (ADVMODES_STATE_PRODUCT | ADVMODES_BEACONS_MASK)
 
 /**
  * @brief Define the external sensor interface for this product.

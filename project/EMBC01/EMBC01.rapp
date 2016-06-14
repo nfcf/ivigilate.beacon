@@ -75,7 +75,8 @@
 					<Property Header="More" Value="-v" />
 				</Section>
 				<Section Header="OPTIMIZE" >
-					<Property Header="Optimize" Value="-O1" Removable="1" />
+					<Property Header="Optimize" Value="-Os" Removable="1" />
+					<Property Header="IGNOREINLINE" Value="-fno-inline" Removable="1" />
 				</Section>
 				<Section Header="DEBUG" >
 					<Property Header="TEMP" Value="" Removable="1" />
@@ -103,6 +104,7 @@
 			<Set Header="RUNCMD" >
 				<Section Header="Postlink" >
 					<Property Header="Command" Value="cmd /C move /Y *.d .\build" Removable="1" />
+					<Property Header="PostlinkAction" Value="No" Removable="1" />
 				</Section>
 			</Set>
 		</Config>

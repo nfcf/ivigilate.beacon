@@ -1,5 +1,40 @@
 
 <Debug>
+	<EMBC01>
+		<CodeView TopRow="11284" Focus="11292" >
+			<CodeReport>
+				<0>112</0>
+				<1>65</1>
+				<2>142</2>
+				<3>195</3>
+				<4>35</4>
+				<5>75</5>
+														
+			</CodeReport>
+										
+		</CodeView>
+		<SpyWatch>
+			<Report>
+				<Def Header="InspectReport" NbCol="10" >
+					<Col Type="PT_STRING" Header="Name" sizeCache="DDDDDDDDDDDD" AutoSize="1" Edit="1" Sortable="1" />
+					<Col Type="PT_STRING" Header="Value" sizeCache="DDDDDDDDDDDDDDDDDDDDDDD" AutoSize="1" Edit="1" Sortable="0" />
+					<Col Type="PT_STRING" Header="Addr" sizeCache="DDDDDDDD" AutoSize="1" Edit="0" Sortable="1" Visible="1" />
+					<Col Type="PT_STRING" Header="Nature" sizeCache="DDDDDDDD" AutoSize="1" Edit="0" Visible="0" />
+					<Col Type="PT_STRING" Header="Format" sizeCache="DDDD" AutoSize="1" Edit="0" Visible="0" />
+					<Col Type="PT_STRING" Header="RangeMin" sizeCache="DDDD" AutoSize="1" Edit="0" Visible="0" />
+					<Col Type="PT_STRING" Header="RangeMax" sizeCache="DDDD" AutoSize="1" Edit="0" Visible="0" />
+					<Col Type="PT_STRING" Header="Expression" sizeCache="DDDD" AutoSize="1" Edit="0" Visible="0" />
+					<Col Type="PT_STRING" Header="Type" sizeCache="DDDDDD" AutoSize="1" Edit="0" Visible="1" />
+					<Col Type="PT_BOOL" Header="Monitoring" sizeCache="18" AutoSize="0" Edit="1" Sortable="1" Icon="C:\Raisonance\Ride\Config\Resources\check.bmp" />
+																		
+				</Def>
+				<Rows/>
+														
+			</Report>
+										
+		</SpyWatch>
+						
+	</EMBC01>
 	<Flags>
 		<Report>
 			<Def Header="FlagReport" NbCol="9" >
@@ -22,9 +57,9 @@
 			
 	</Flags>
 	<Views>
-		<View File="..\..\src\main.c" Line="1" Index="0" />
+		<View File="..\..\src\main.c" Line="1694" Index="0" focus="1" />
 		<View File="..\..\src\config.h" Line="1" Index="1" />
-		<View File="..\..\src\config-coincell.h" Line="1" Index="2" focus="1" />
+		<View File="..\..\src\config-coincell.h" Line="158" Index="2" />
 	</Views>
 	<BookMarks>
 		<BookMark File="" Line="0" />
@@ -49,10 +84,20 @@
 			<GrepFileType>*.c;*.h</GrepFileType>
 		</GrepFileTypes>
 		<GrepFindWhat>
-			<GrepFindWhatValue>beaconing</GrepFindWhatValue>
+			<GrepFindWhatValue>ADVMODES_STATE_PRODUCT</GrepFindWhatValue>
+			<GrepFindStr>ADVMODES_STATE_PRODUCT</GrepFindStr>
+			<GrepFindStr>PARAMETERS_S5R59</GrepFindStr>
+			<GrepFindStr>EMBC02_STATE_SENSOR_MODE</GrepFindStr>
+			<GrepFindStr>CAPABILITY_BATTERY_SENSE</GrepFindStr>
+			<GrepFindStr>advMachines</GrepFindStr>
+			<GrepFindStr>event_count</GrepFindStr>
+			<GrepFindStr>EMAdvertisingPacket</GrepFindStr>
+			<GrepFindStr>modelID</GrepFindStr>
+			<GrepFindStr>packet_count</GrepFindStr>
+			<GrepFindStr>ADVMODES_EMBEACON</GrepFindStr>
 			<GrepFindStr>beaconing</GrepFindStr>
-			<GrepFindStr>WaitForDelay</GrepFindStr>
 			<GrepFindStr>BTN_IsPressed</GrepFindStr>
+			<GrepFindStr>WaitForDelay</GrepFindStr>
 		</GrepFindWhat>
 		<GrepFindWhere>
 			<GrepFindWhereValue>Application Files</GrepFindWhereValue>

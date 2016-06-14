@@ -117,10 +117,10 @@
 /**
  * @brief CONFIGURE PACKET CAPABILITIES
  */
-#define CAPABILITY_ALT_BEACON             0        // SET this to 1 to include support for AltBeacon
+#define CAPABILITY_ALT_BEACON             1        // SET this to 1 to include support for AltBeacon
 #define CAPABILITY_IDDATA_BEACON          0        // SET this to 1 to include support for IDDATA
 #define CAPABILITY_EMBEACON               1        // SET THIS to 1 to include support for EMBEACON
-#define CAPABILITY_EDDYSTONE              0        // SET THIS to 1 to include support for EDDYSTONE Beacons
+#define CAPABILITY_EDDYSTONE              1        // SET THIS to 1 to include support for EDDYSTONE Beacons
 
 /**
  * @brief ACCESSORY CONFIGURATION (These are fixed b hardware that's either there or not)
@@ -155,7 +155,7 @@
  * This defines the default behavior and packet types when the button is pushed.
  * Can be overriden at programming time.
  */
-#define ADVMODES_DEFAULT    (ADVMACHINES_IVIGILATE | ADVMODES_BEACONS_MASK)
+// #define ADVMODES_DEFAULT    (ADVMACHINES_IVIGILATE | ADVMODES_BEACONS_MASK)
 
 
 /* ******************************************
