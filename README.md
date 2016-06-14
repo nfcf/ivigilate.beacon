@@ -66,5 +66,5 @@ library contains only stub functions. This means that if you recompile and progr
 
 
 
-* To Fix build issues (moving from GCC3.0 to GCC4.0)
+### To Fix build issues (moving from GCC3.0 to GCC4.0)
 https://forums.emdeveloper.com/index.php?threads/embeacon-programming-problem.58/#post-664
