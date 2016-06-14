@@ -1,4 +1,3 @@
-
 ## EM6819_Beacon Version 3.0.0
 
 This package contains the Software Development Kit (SDK) for the following
@@ -65,3 +64,7 @@ library contains only stub functions. This means that if you recompile and progr
 
   [1]: https://www.emdeveloper.com/?p=455
 
+
+
+* To Fix build issues (moving from GCC3.0 to GCC4.0)
+https://forums.emdeveloper.com/index.php?threads/embeacon-programming-problem.58/#post-664
