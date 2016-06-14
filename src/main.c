@@ -769,8 +769,9 @@ void InitParams(void)
 *******************************************************************************/
 void ProcessButton(void)
 {
-   // Once sticky is set, btn is ignored - ivigilate mode doesn't set sticky
-   if (!stickyMode)
+   // Once sticky is set, (and not ivigilate mode) btn is ignored
+   if (advMachines == ADVMACHINES_IVIGILATE || 
+       !stickyMode)
    {
       if (BTN_IsPressed())
       {
@@ -791,7 +792,8 @@ void ProcessButton(void)
             // Lock (and acknowledge) the mode only if beaconing is not completely OFF
             if (beaconMode & (ADVMODES_BEACONS_MASK))
             {
-               if (advMachines == ADVMACHINES_IVIGILATE) 
+               if (advMachines == ADVMACHINES_IVIGILATE &&
+                   stickyMode) 
                {
                    panicMode = 0;
                }
@@ -811,10 +813,10 @@ void ProcessButton(void)
             {
                // Button released...transition to next mode & increment count mod 2^12
                switchPress = (switchPress + 1) & 0x0FFF;    // running count. never clear.
-               NextMode();
-               PRODUCT_CHANGE_STATE(beaconModeIdx, beaconMode);
-            
-               if (advMachines == ADVMACHINES_IVIGILATE) {
+               if (!stickyMode) {
+                   NextMode();
+                   PRODUCT_CHANGE_STATE(beaconModeIdx, beaconMode);
+               } else {
                    panicMode = 1;
                }
             }

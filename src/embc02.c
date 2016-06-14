@@ -104,7 +104,7 @@ static          UINT16 embc02_DownCountInUse_p;        // boolean on setting lim
 void Handle_Irq_Port1(void)
 {
    embc02_EventCount++;
-   panicMode = 1;  // Used for ivigilate state machine only
+   panicMode = 1;  // Used for ivigilate state machine only. panicMode defined in statemachine.c
 }
 
 /**
@@ -203,15 +203,22 @@ void EMBC02_ChangeState(UINT8 state)
  * @return nothing
  *******************************************************************************
  */
-void EMBC02_IVigilate_AlwaysSameState(void)
+void EMBC02_IVigilate_ChangeState(UINT8 state)
 {
-   BMA222E_DisableIntEngine();
+   if (state) {
+      BMA222E_DisableIntEngine();
 
-   BMA222E_EnterFallDetectionMode();
-   
-   BMA222E_Wake();        // Keep the sensor awake and in low power mode.
-   PA_SetIN(PIN_INT);    // Make sure the interrupt port is an input.
-   En_IRQ_Port1();       // Turn on accel interrupts (ISR=Handle_Irq_Port1).
+      BMA222E_EnterFallDetectionMode();
+       
+      BMA222E_Wake();       // Keep the sensor awake and in low power mode.
+      PA_SetIN(PIN_INT);    // Make sure the interrupt port is an input.
+      En_IRQ_Port1();       // Turn on accel interrupts (ISR=Handle_Irq_Port1).
+   }
+   else
+   {
+      Dis_IRQ_Port1();      // Terminate the event stream
+      BMA222E_Suspend();    // Put
+   }
 }
 
 /**
@@ -222,7 +229,7 @@ void EMBC02_IVigilate_AlwaysSameState(void)
  * @return true if the packet should be sent; false otherwise
  *******************************************************************************
  */
-UINT8 EMBC02_IVigilate_AlwaysMorePacketsToCome(UINT8 mode)
+UINT8 EMBC02_IVigilate_MorePacketsToCome(UINT8 mode)
 {
    return (mode & ADVMODES_BEACONS_MASK);
 }
@@ -236,9 +243,9 @@ UINT8 EMBC02_IVigilate_AlwaysMorePacketsToCome(UINT8 mode)
  * @return true if the packet should be sent; false otherwise
  *******************************************************************************
  */
-UINT8 EMBC02_IVigilate_AlwaysOkToAdvertise(UINT8 state, UINT8 mode)
+UINT8 EMBC02_IVigilate_OkToAdvertise(UINT8 state, UINT8 mode)
 {
-   return EMBC02_IVigilate_AlwaysMorePacketsToCome(mode);
+   return EMBC02_IVigilate_MorePacketsToCome(mode);
 }
 
 /**

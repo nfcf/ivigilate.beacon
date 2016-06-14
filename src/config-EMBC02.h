@@ -174,9 +174,9 @@ void   EMBC02_ChangeState(UINT8 state);
 UINT8  EMBC02_MorePacketsToCome_p(UINT8 mode);
 UINT8  EMBC02_OkToAdvertise_p(UINT8 state, UINT8 mode);
 
-void   EMBC02_IVigilate_AlwaysSameState(void);
-UINT8  EMBC02_IVigilate_AlwaysMorePacketsToCome(UINT8 mode);
-UINT8  EMBC02_IVigilate_AlwaysOkToAdvertise(UINT8 state, UINT8 mode);
+void   EMBC02_IVigilate_ChangeState(UINT8 state);
+UINT8  EMBC02_IVigilate_MorePacketsToCome(UINT8 mode);
+UINT8  EMBC02_IVigilate_OkToAdvertise(UINT8 state, UINT8 mode);
 
 /**
  * @brief Define the external sensor interface for this product.
@@ -188,12 +188,12 @@ UINT8  EMBC02_IVigilate_AlwaysOkToAdvertise(UINT8 state, UINT8 mode);
  * return values are not identified here, but they should be.
  */
 #define PRODUCT_POWER_ON_INIT(state,mode)             EMBC02_PowerOnInit()
-#define PRODUCT_CHANGE_STATE(state,mode)              EMBC02_IVigilate_AlwaysSameState() // EMBC02_ChangeState(state)
+#define PRODUCT_CHANGE_STATE(state,mode)              EMBC02_IVigilate_ChangeState(state) // EMBC02_ChangeState(state)
 #define PRODUCT_ACQUIRE_DATA(state,mode,packetCount)  // nothing do: acquisition runs in backround
 #define PRODUCT_GET_SAMPLE_VALUE(dataType)            BMA222E_MeasureX()
 #define PRODUCT_GET_EVENT_COUNT(eventType)            EMBC02_GetEventCount()
-#define PRODUCT_IS_BROADCAST_ENABLED(state,mode)      EMBC02_IVigilate_AlwaysOkToAdvertise(state,mode) // EMBC02_OkToAdvertise_p(state,mode)
-#define PRODUCT_IS_TIMER_WAKEUP_NEEDED(state,mode)    EMBC02_IVigilate_AlwaysMorePacketsToCome(mode) // EMBC02_MorePacketsToCome_p(mode)
+#define PRODUCT_IS_BROADCAST_ENABLED(state,mode)      EMBC02_IVigilate_OkToAdvertise(state,mode) // EMBC02_OkToAdvertise_p(state,mode)
+#define PRODUCT_IS_TIMER_WAKEUP_NEEDED(state,mode)    EMBC02_IVigilate_MorePacketsToCome(mode) // EMBC02_MorePacketsToCome_p(mode)
 
 
 /* ******************************************

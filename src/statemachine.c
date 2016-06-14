@@ -73,7 +73,7 @@
 #include "beacon.h"
 #include "statemachine.h"
 
-UINT16 beaconMode  = BCNMODE_EM; // BCNMODE_INIT;  // state descriptor - packet/power/interval options
+UINT16 beaconMode  = BCNMODE_INIT;  // state descriptor - packet/power/interval options
 UINT8 beaconModeIdx = 0;               // state table index (de facto state identifier)
 UINT8 advModes;                        // See BCNMODE_ 
 UINT8 advMachines;                     // See ADVMACHINES_ 
@@ -108,6 +108,7 @@ const UINT16 ProductStateModes[] = {         // Selected when advMachines is ADV
 };
 
 const UINT16 IVigilateModes[] = {           // Selected when advMachines is ADVMACHINES_IVIGILATE
+   BCNMODE_INIT,
    BCNMODE_EM,
    BCNMODE_EOL,                             // end of list, wrap around to the OFF state
 };
