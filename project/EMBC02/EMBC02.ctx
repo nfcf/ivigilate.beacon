@@ -7,7 +7,7 @@
 		<View File="..\..\src\config-EMBC02.h" Line="158" Index="3" />
 		<View File="..\..\src\embc02.c" Line="208" Index="4" />
 		<View File="..\..\src\beacon.h" Line="105" Index="5" />
-															
+																		
 	</Views>
 	<BookMarks>
 		<BookMark File="" Line="0" />
@@ -20,7 +20,7 @@
 		<BookMark File="" Line="0" />
 		<BookMark File="" Line="0" />
 		<BookMark File="" Line="0" />
-															
+																		
 	</BookMarks>
 	<Grep>
 		<GrepIncludeSub>yes</GrepIncludeSub>
@@ -31,7 +31,7 @@
 		<GrepFileTypes>
 			<GrepFileTypesValue>*.c;*.h</GrepFileTypesValue>
 			<GrepFileType>*.c;*.h</GrepFileType>
-																									
+																														
 		</GrepFileTypes>
 		<GrepFindWhat>
 			<GrepFindWhatValue>PARAMETERS_S5R59</GrepFindWhatValue>
@@ -48,20 +48,20 @@
 			<GrepFindStr>beaconing</GrepFindStr>
 			<GrepFindStr>BTN_IsPressed</GrepFindStr>
 			<GrepFindStr>WaitForDelay</GrepFindStr>
-																									
+																														
 		</GrepFindWhat>
 		<GrepFindWhere>
 			<GrepFindWhereValue>Application Files</GrepFindWhereValue>
 			<GrepPathStr>Application Files</GrepPathStr>
 			<GrepPathStr>Application Path</GrepPathStr>
 			<GrepPathStr>Project Files</GrepPathStr>
-																									
+																														
 		</GrepFindWhere>
 		<GrepReplaceWhat>
 			<GrepReplaceWhatValue/>
-																									
+																														
 		</GrepReplaceWhat>
-															
+																		
 	</Grep>
 	<FindStrings>
 		<Find>dynamic</Find>
@@ -78,7 +78,7 @@
 		<Find>main</Find>
 		<Find>send</Find>
 		<Find>processB</Find>
-															
+																		
 	</FindStrings>
 	<ReplaceStrings/>
 	<EMBC02>
@@ -112,7 +112,7 @@
 				</Rows>
 			</Report>
 		</SpyWatch>
-		<CodeView TopRow="14404" Focus="14412" >
+		<CodeView TopRow="14408" Focus="14416" >
 			<CodeReport>
 				<0>112</0>
 				<1>64</1>

@@ -795,7 +795,8 @@ void ProcessButton(void)
                    stickyMode) 
                {
                    panicMode = 0;
-                   WaitNmSec(1000); // wait 1 second so the user as time to free the button
+                   RefreshSC();
+                   WaitNmSec(1000); // wait 1 second so the user as time to release the button
                }
                else 
                {
