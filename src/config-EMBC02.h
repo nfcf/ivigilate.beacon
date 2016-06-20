@@ -231,6 +231,9 @@ UINT8  EMBC02_IVigilate_OkToAdvertise(UINT8 state, UINT8 mode);
 #define EMBC02_STATE_MOVING_MODE     2
 #define EMBC02_STATE_FALL_MODE       3
 
+#define EMBC02_IVIGILATE_STATE_IGNORE_BUTTONS 1
+#define EMBC02_IVIGILATE_STATE_WITH_PANIC    2
+
 /**
  * Brief Product-specific power and timing constants used for state-machine customization.
  * These values correspond to the BCNMODE_INTERVAL_{A,B,C} and the BCNMODE_POWER_{A,B,C}

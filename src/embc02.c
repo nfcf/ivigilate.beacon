@@ -104,7 +104,8 @@ static          UINT16 embc02_DownCountInUse_p;        // boolean on setting lim
 void Handle_Irq_Port1(void)
 {
    embc02_EventCount++;
-   panicMode = 1;  // Used for ivigilate state machine only. panicMode defined in statemachine.c
+   panicMode = panicModeDuration;  // Used for ivigilate state machine only. 
+                                   // variables defined in statemachine.c
 }
 
 /**
@@ -205,7 +206,7 @@ void EMBC02_ChangeState(UINT8 state)
  */
 void EMBC02_IVigilate_ChangeState(UINT8 state)
 {
-   if (state) {
+   if (state == EMBC02_IVIGILATE_STATE_WITH_PANIC) {
       BMA222E_DisableIntEngine();
 
       BMA222E_EnterFallDetectionMode();

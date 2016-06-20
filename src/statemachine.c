@@ -109,9 +109,12 @@ const UINT16 ProductStateModes[] = {         // Selected when advMachines is ADV
 
 const UINT16 IVigilateModes[] = {           // Selected when advMachines is ADVMACHINES_IVIGILATE
    BCNMODE_INIT,
-   BCNMODE_EM,
+   BCNMODE_EM,                              // After Sticky: Always ON mode, ignore button presses
+   BCNMODE_EM,                              // After Sticky: Always ON mode, panic mode on button press and fall
    BCNMODE_EOL,                             // end of list, wrap around to the OFF state
 };
+
+const UINT8 panicModeDuration = 3000; // ~5 minutes worth
 
 /**
  * @brief Beacon Mode-Mask Rotation

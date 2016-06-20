@@ -264,8 +264,7 @@ const UINT8 maxPktCount[EM_RF_POWER_LEVEL_MAX_INDEX+1] = {42, 42, 41, 40, 35, 33
 // Forward declarations
 void GoToBeaconFailedMode(void);
 
-UINT8 panicMode = 0;
-UINT8 panicModeLedsHelperCounter = 0;
+UINT8 panicMode; // defined in statemachine.h
 
 /**
  ******************************************************************************
@@ -714,11 +713,11 @@ void AckStickyStateWithLED(void)
    RefreshSC();
    WaitNmSec(75);
    EnableGrnLED();
-   WaitNmSec(200);
+   WaitNmSec(250);
    DisableGrnLED();
    WaitNmSec(125);
    EnableGrnLED();
-   WaitNmSec(200);
+   WaitNmSec(250);
    DisableGrnLED();
    #endif
 }
@@ -770,7 +769,7 @@ void InitParams(void)
 void ProcessButton(void)
 {
    // Once sticky is set, (and not ivigilate mode) btn is ignored
-   if (advMachines == ADVMACHINES_IVIGILATE || 
+   if ((advMachines == ADVMACHINES_IVIGILATE && beaconModeIdx != EMBC02_IVIGILATE_STATE_IGNORE_BUTTONS) || 
        !stickyMode)
    {
       if (BTN_IsPressed())
@@ -796,6 +795,7 @@ void ProcessButton(void)
                    stickyMode) 
                {
                    panicMode = 0;
+                   WaitNmSec(1000); // wait 1 second so the user as time to free the button
                }
                else 
                {
@@ -817,7 +817,7 @@ void ProcessButton(void)
                    NextMode();
                    PRODUCT_CHANGE_STATE(beaconModeIdx, beaconMode);
                } else {
-                   panicMode = 1;
+                   panicMode = panicModeDuration;
                }
             }
             switchPressTime = 0;
@@ -1812,12 +1812,12 @@ int main(void)
             {
                DisableGrnLED();
                DisableRedLED();
-               if (panicModeLedsHelperCounter == 0) {
+               if (panicMode % 2 == 0) {
                   EnableGrnLED();
                } else {
                   EnableRedLED();
                }   
-               panicModeLedsHelperCounter = (++panicModeLedsHelperCounter) % 2;
+               panicMode--;
             }
         
             // Prepare data for next shipment

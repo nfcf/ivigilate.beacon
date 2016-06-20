@@ -104,6 +104,7 @@ UINT16 GetMode(UINT8 idx);
 void NextMode(void);
 
 extern UINT8 panicMode;  // Used for ivigilate state machine only
+extern const UINT8 panicModeDuration;
 
 #endif
 //--------------- END OF FILE ------------------------//

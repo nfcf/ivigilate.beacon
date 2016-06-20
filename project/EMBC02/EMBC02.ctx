@@ -1,5 +1,86 @@
 
 <Debug>
+	<Views>
+		<View File="..\..\src\main.c" Line="1596" Index="0" focus="1" />
+		<View File="..\..\src\statemachine.c" Line="247" Index="1" />
+		<View File="..\..\src\params.c" Line="120" Index="2" />
+		<View File="..\..\src\config-EMBC02.h" Line="158" Index="3" />
+		<View File="..\..\src\embc02.c" Line="208" Index="4" />
+		<View File="..\..\src\beacon.h" Line="105" Index="5" />
+															
+	</Views>
+	<BookMarks>
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+		<BookMark File="" Line="0" />
+															
+	</BookMarks>
+	<Grep>
+		<GrepIncludeSub>yes</GrepIncludeSub>
+		<GrepMatchCase>no</GrepMatchCase>
+		<GrepMatchWhole>no</GrepMatchWhole>
+		<GrepRegExp>no</GrepRegExp>
+		<GrepReplaceMode>no</GrepReplaceMode>
+		<GrepFileTypes>
+			<GrepFileTypesValue>*.c;*.h</GrepFileTypesValue>
+			<GrepFileType>*.c;*.h</GrepFileType>
+																									
+		</GrepFileTypes>
+		<GrepFindWhat>
+			<GrepFindWhatValue>PARAMETERS_S5R59</GrepFindWhatValue>
+			<GrepFindStr>ADVMODES_STATE_PRODUCT</GrepFindStr>
+			<GrepFindStr>PARAMETERS_S5R59</GrepFindStr>
+			<GrepFindStr>EMBC02_STATE_SENSOR_MODE</GrepFindStr>
+			<GrepFindStr>CAPABILITY_BATTERY_SENSE</GrepFindStr>
+			<GrepFindStr>advMachines</GrepFindStr>
+			<GrepFindStr>event_count</GrepFindStr>
+			<GrepFindStr>EMAdvertisingPacket</GrepFindStr>
+			<GrepFindStr>modelID</GrepFindStr>
+			<GrepFindStr>packet_count</GrepFindStr>
+			<GrepFindStr>ADVMODES_EMBEACON</GrepFindStr>
+			<GrepFindStr>beaconing</GrepFindStr>
+			<GrepFindStr>BTN_IsPressed</GrepFindStr>
+			<GrepFindStr>WaitForDelay</GrepFindStr>
+																									
+		</GrepFindWhat>
+		<GrepFindWhere>
+			<GrepFindWhereValue>Application Files</GrepFindWhereValue>
+			<GrepPathStr>Application Files</GrepPathStr>
+			<GrepPathStr>Application Path</GrepPathStr>
+			<GrepPathStr>Project Files</GrepPathStr>
+																									
+		</GrepFindWhere>
+		<GrepReplaceWhat>
+			<GrepReplaceWhatValue/>
+																									
+		</GrepReplaceWhat>
+															
+	</Grep>
+	<FindStrings>
+		<Find>dynamic</Find>
+		<Find>GetBatteryLife</Find>
+		<Find>battery</Find>
+		<Find>sticky</Find>
+		<Find>advMachines == ADV</Find>
+		<Find>0xFFFF</Find>
+		<Find>0xFF</Find>
+		<Find>panicMod</Find>
+		<Find>paniMod</Find>
+		<Find>panicMode</Find>
+		<Find>CoinStandardModes</Find>
+		<Find>main</Find>
+		<Find>send</Find>
+		<Find>processB</Find>
+															
+	</FindStrings>
+	<ReplaceStrings/>
 	<EMBC02>
 		<SpyWatch>
 			<Report>
@@ -14,10 +95,9 @@
 					<Col Type="PT_STRING" Header="Expression" sizeCache="DDDD" AutoSize="1" Edit="0" Visible="0" />
 					<Col Type="PT_STRING" Header="Type" sizeCache="DDDDDD" AutoSize="1" Edit="0" Visible="1" />
 					<Col Type="PT_BOOL" Header="Monitoring" sizeCache="18" AutoSize="0" Edit="1" Sortable="1" Icon="C:\Raisonance\Ride\Config\Resources\check.bmp" />
-																																				
 				</Def>
 				<Rows>
-					<Row Expand="0" Name="beaconMode" Value="" Addr="F1" Nature="DATA" Format="0" RangeMin="0" RangeMax="0" Expression="beaconMode" Type="UINT16" Monitoring="FALSE" />
+					<Row Expand="0" Name="beaconMode" Value="" Addr="F0" Nature="DATA" Format="0" RangeMin="0" RangeMax="0" Expression="beaconMode" Type="UINT16" Monitoring="FALSE" />
 					<Row Expand="0" Name="maskRingCurrent" Value="" Addr="138" Nature="DATA" Format="0" RangeMin="0" RangeMax="0" Expression="maskRingCurrent" Type="UINT8*" Monitoring="FALSE" />
 					<Row Expand="0" Name="maskRingEnd" Value="" Addr="136" Nature="DATA" Format="0" RangeMin="0" RangeMax="0" Expression="maskRingEnd" Type="UINT8*" Monitoring="FALSE" />
 					<Row Expand="0" Name="*maskRingCurrent" Value="" Addr="0" Nature="DATA" Format="0" RangeMin="0" RangeMax="0" Expression="*maskRingCurrent" Type="UINT8" Monitoring="FALSE" />
@@ -29,25 +109,19 @@
 					<Row Expand="0" Name="ADVMODES_EMBEACON" Value="" Addr="" Nature="" Format="0" RangeMin="0" RangeMax="0" Expression="ADVMODES_EMBEACON" Type="" Monitoring="FALSE" />
 					<Row Expand="0" Name="tmp1" Value="" Addr="" Nature="" Format="0" RangeMin="0" RangeMax="0" Expression="tmp1" Type="" Monitoring="FALSE" />
 					<Row Expand="0" Name="tmp2" Value="" Addr="" Nature="" Format="0" RangeMin="0" RangeMax="0" Expression="tmp2" Type="" Monitoring="FALSE" />
-																																				
 				</Rows>
-																												
 			</Report>
-																				
 		</SpyWatch>
-		<CodeView TopRow="13868" Focus="13876" >
+		<CodeView TopRow="14404" Focus="14412" >
 			<CodeReport>
 				<0>112</0>
-				<1>115</1>
-				<2>252</2>
-				<3>347</3>
-				<4>62</4>
-				<5>135</5>
-																												
+				<1>64</1>
+				<2>141</2>
+				<3>195</3>
+				<4>35</4>
+				<5>77</5>
 			</CodeReport>
-																				
 		</CodeView>
-												
 	</EMBC02>
 	<Flags>
 		<Report>
@@ -63,80 +137,8 @@
 				<Col Type="PT_STRING" Header="Condition" sizeCache="DDDDDDDDDDDDDDDDDDDDDDDD" AutoSize="1" Edit="0" Sortable="0" />
 				<Col Type="PT_STRING" Header="Condexpr" sizeCache="DD" AutoSize="1" Edit="0" Sortable="0" Visible="0" />
 				<Col Type="PT_STRING" Header="Condcount" sizeCache="DD" AutoSize="1" Edit="0" Sortable="0" Visible="0" />
-							
 			</Def>
 			<Rows/>
-					
 		</Report>
-			
 	</Flags>
-	<Views>
-		<View File="..\..\src\main.c" Line="1811" Index="0" />
-		<View File="..\..\src\statemachine.c" Line="247" Index="1" />
-		<View File="..\..\src\params.c" Line="120" Index="2" />
-		<View File="..\..\src\config-EMBC02.h" Line="123" Index="3" focus="1" />
-		<View File="..\..\src\embc02.c" Line="208" Index="4" />
-		<View File="..\..\src\beacon.h" Line="122" Index="5" />
-	</Views>
-	<BookMarks>
-		<BookMark File="" Line="0" />
-		<BookMark File="" Line="0" />
-		<BookMark File="" Line="0" />
-		<BookMark File="" Line="0" />
-		<BookMark File="" Line="0" />
-		<BookMark File="" Line="0" />
-		<BookMark File="" Line="0" />
-		<BookMark File="" Line="0" />
-		<BookMark File="" Line="0" />
-		<BookMark File="" Line="0" />
-	</BookMarks>
-	<Grep>
-		<GrepIncludeSub>yes</GrepIncludeSub>
-		<GrepMatchCase>no</GrepMatchCase>
-		<GrepMatchWhole>no</GrepMatchWhole>
-		<GrepRegExp>no</GrepRegExp>
-		<GrepReplaceMode>no</GrepReplaceMode>
-		<GrepFileTypes>
-			<GrepFileTypesValue>*.c;*.h</GrepFileTypesValue>
-			<GrepFileType>*.c;*.h</GrepFileType>
-		</GrepFileTypes>
-		<GrepFindWhat>
-			<GrepFindWhatValue>PARAMETERS_S5R59</GrepFindWhatValue>
-			<GrepFindStr>PARAMETERS_S5R59</GrepFindStr>
-			<GrepFindStr>EMBC02_STATE_SENSOR_MODE</GrepFindStr>
-			<GrepFindStr>CAPABILITY_BATTERY_SENSE</GrepFindStr>
-			<GrepFindStr>advMachines</GrepFindStr>
-			<GrepFindStr>event_count</GrepFindStr>
-			<GrepFindStr>EMAdvertisingPacket</GrepFindStr>
-			<GrepFindStr>modelID</GrepFindStr>
-			<GrepFindStr>packet_count</GrepFindStr>
-			<GrepFindStr>ADVMODES_EMBEACON</GrepFindStr>
-			<GrepFindStr>beaconing</GrepFindStr>
-			<GrepFindStr>BTN_IsPressed</GrepFindStr>
-			<GrepFindStr>WaitForDelay</GrepFindStr>
-		</GrepFindWhat>
-		<GrepFindWhere>
-			<GrepFindWhereValue>Application Files</GrepFindWhereValue>
-			<GrepPathStr>Application Files</GrepPathStr>
-			<GrepPathStr>Application Path</GrepPathStr>
-			<GrepPathStr>Project Files</GrepPathStr>
-		</GrepFindWhere>
-		<GrepReplaceWhat>
-			<GrepReplaceWhatValue/>
-		</GrepReplaceWhat>
-	</Grep>
-	<FindStrings>
-		<Find>sticky</Find>
-		<Find>advMachines == ADV</Find>
-		<Find>0xFFFF</Find>
-		<Find>0xFF</Find>
-		<Find>panicMod</Find>
-		<Find>paniMod</Find>
-		<Find>panicMode</Find>
-		<Find>CoinStandardModes</Find>
-		<Find>main</Find>
-		<Find>send</Find>
-		<Find>processB</Find>
-	</FindStrings>
-	<ReplaceStrings/>
 </Debug>
