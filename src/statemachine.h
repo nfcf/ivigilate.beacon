@@ -106,6 +106,9 @@ void NextMode(void);
 extern UINT8 panicMode;  // Used for ivigilate state machine only
 extern const UINT8 panicModeDuration;
 
+#define EMBC02_IVIGILATE_STATE_IGNORE_BUTTONS 1
+#define EMBC02_IVIGILATE_STATE_WITH_PANIC    2
+
 #endif
 //--------------- END OF FILE ------------------------//
 

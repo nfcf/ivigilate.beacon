@@ -1594,7 +1594,7 @@ void UpdateDynamicPacketData(const UINT8 powerIndex, const UINT8 batteryLevel)
    }
    else
    {
-       EMAdvertisingPacket.data.event_count = panicMode ? 0xFFFF : 0x0001;
+       EMAdvertisingPacket.data.event_count = panicMode > 0 ? 0xFFFF : 0x0001;
    }
 
    #if CAPABILITY_ALT_BEACON
@@ -1809,7 +1809,7 @@ int main(void)
             }
 
             // If in panicMode, blink leds and change payload
-            if (panicMode)
+            if (panicMode > 0)
             {
                DisableGrnLED();
                DisableRedLED();
