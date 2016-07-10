@@ -265,6 +265,7 @@ const UINT8 maxPktCount[EM_RF_POWER_LEVEL_MAX_INDEX+1] = {42, 42, 41, 40, 35, 33
 void GoToBeaconFailedMode(void);
 
 UINT8 panicMode; // defined in statemachine.h
+UINT8 fallMode; // defined in statemachine.h
 
 /**
  ******************************************************************************
@@ -781,11 +782,8 @@ void ProcessButton(void)
          }
          // If button is held, set the sticky bit which locks this mode permanently.
          // OR if in ivigilate mode, clear the panic flag instead.
-         // IMPORTANT: Clear switchPressTime to allow sleep and beaconing to resume
-         // even if the switch is jumpered
          if (++switchPressTime >= LONGPRESSTIME)
          {
-            switchPressTime = 0;
             DisableGrnLED();
             DisableRedLED();
             // Lock (and acknowledge) the mode only if beaconing is not completely OFF
@@ -795,11 +793,11 @@ void ProcessButton(void)
                    stickyMode) 
                {
                    panicMode = 0;
-                   RefreshSC();
-                   WaitNmSec(1000); // wait 1 second so the user as time to release the button
+                   fallMode = 0;
                }
                else 
                {
+                   switchPressTime = 0;
                    stickyMode = 1;
                    AckStickyStateWithLED();
                }
@@ -810,7 +808,7 @@ void ProcessButton(void)
       {
          if (switchPressTime)
          {
-            if (switchPressTime >= SWITCHDEBOUNCETIME)
+            if (switchPressTime >= SWITCHDEBOUNCETIME && switchPressTime < LONGPRESSTIME)
             {
                // Button released...transition to next mode & increment count mod 2^12
                switchPress = (switchPress + 1) & 0x0FFF;    // running count. never clear.
@@ -818,9 +816,11 @@ void ProcessButton(void)
                    NextMode();
                    PRODUCT_CHANGE_STATE(beaconModeIdx, beaconMode);
                } else {
-                   panicMode = panicModeDuration;
+                   panicMode = alertModeDuration;
+                   fallMode = 0;
                }
             }
+        
             switchPressTime = 0;
             // LEDs (if present) were lit to acknowledge button press.  Turn off now.
             // (Not strictly required.  LEDs will go off when beacon goes to sleep.)
@@ -1594,7 +1594,8 @@ void UpdateDynamicPacketData(const UINT8 powerIndex, const UINT8 batteryLevel)
    }
    else
    {
-       EMAdvertisingPacket.data.event_count = panicMode > 0 ? 0xFFFF : 0x0001;
+       EMAdvertisingPacket.data.event_count = panicMode > 0 ? 0xFFFF : 
+                                               fallMode > 0 ? 0xAAAA : 0x1111;
    }
 
    #if CAPABILITY_ALT_BEACON
@@ -1808,17 +1809,17 @@ int main(void)
                }
             }
 
-            // If in panicMode, blink leds and change payload
-            if (panicMode > 0)
+            // If in alert Mode, blink leds
+            if (panicMode > 0 || fallMode > 0)
             {
-               DisableGrnLED();
-               DisableRedLED();
-               if (panicMode % 2 == 0) {
+               // LEDs will go off when beacon goes to sleep.
+               if ((panicMode + fallMode) % 2 == 0) {
                   EnableGrnLED();
                } else {
                   EnableRedLED();
                }   
-               panicMode--;
+               if (panicMode > 0) panicMode--;
+               if (fallMode > 0) fallMode--;
             }
         
             // Prepare data for next shipment

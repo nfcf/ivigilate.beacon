@@ -104,7 +104,8 @@ UINT16 GetMode(UINT8 idx);
 void NextMode(void);
 
 extern UINT8 panicMode;  // Used for ivigilate state machine only
-extern const UINT8 panicModeDuration;
+extern UINT8 fallMode;   // Used for ivigilate state machine only
+extern const UINT8 alertModeDuration;
 
 #define EMBC02_IVIGILATE_STATE_IGNORE_BUTTONS 1
 #define EMBC02_IVIGILATE_STATE_WITH_PANIC    2

@@ -114,7 +114,7 @@ const UINT16 IVigilateModes[] = {           // Selected when advMachines is ADVM
    BCNMODE_EOL,                             // end of list, wrap around to the OFF state
 };
 
-const UINT8 panicModeDuration = 3000; // ~5 minutes worth
+const UINT8 alertModeDuration = 3000; // ~5 minutes worth
 
 /**
  * @brief Beacon Mode-Mask Rotation

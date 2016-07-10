@@ -14,7 +14,7 @@
 					<Col Type="PT_STRING" Header="Expression" sizeCache="DDDD" AutoSize="1" Edit="0" Visible="0" />
 					<Col Type="PT_STRING" Header="Type" sizeCache="DDDDDD" AutoSize="1" Edit="0" Visible="1" />
 					<Col Type="PT_BOOL" Header="Monitoring" sizeCache="18" AutoSize="0" Edit="1" Sortable="1" Icon="C:\Raisonance\Ride\Config\Resources\check.bmp" />
-																		
+																																				
 				</Def>
 				<Rows>
 					<Row Expand="0" Name="beaconMode" Value="" Addr="F0" Nature="DATA" Format="0" RangeMin="0" RangeMax="0" Expression="beaconMode" Type="UINT16" Monitoring="FALSE" />
@@ -29,11 +29,11 @@
 					<Row Expand="0" Name="ADVMODES_EMBEACON" Value="" Addr="" Nature="" Format="0" RangeMin="0" RangeMax="0" Expression="ADVMODES_EMBEACON" Type="" Monitoring="FALSE" />
 					<Row Expand="0" Name="tmp1" Value="" Addr="" Nature="" Format="0" RangeMin="0" RangeMax="0" Expression="tmp1" Type="" Monitoring="FALSE" />
 					<Row Expand="0" Name="tmp2" Value="" Addr="" Nature="" Format="0" RangeMin="0" RangeMax="0" Expression="tmp2" Type="" Monitoring="FALSE" />
-																		
+																																				
 				</Rows>
-														
+																												
 			</Report>
-										
+																				
 		</SpyWatch>
 		<CodeView TopRow="14408" Focus="14416" >
 			<CodeReport>
@@ -43,11 +43,11 @@
 				<3>195</3>
 				<4>35</4>
 				<5>77</5>
-														
+																												
 			</CodeReport>
-										
+																				
 		</CodeView>
-						
+												
 	</EMBC02>
 	<Flags>
 		<Report>
@@ -71,7 +71,7 @@
 			
 	</Flags>
 	<Views>
-		<View File="..\..\src\main.c" Line="1695" Index="0" focus="1" />
+		<View File="..\..\src\main.c" Line="786" Index="0" focus="1" />
 		<View File="..\..\src\statemachine.c" Line="117" Index="1" />
 		<View File="..\..\src\params.c" Line="120" Index="2" />
 		<View File="..\..\src\config-EMBC02.h" Line="232" Index="3" />
@@ -102,7 +102,9 @@
 			<GrepFileType>*.c;*.h</GrepFileType>
 		</GrepFileTypes>
 		<GrepFindWhat>
-			<GrepFindWhatValue>panicModeDuration</GrepFindWhatValue>
+			<GrepFindWhatValue>panicMode</GrepFindWhatValue>
+			<GrepFindStr>switchPressTime</GrepFindStr>
+			<GrepFindStr>WaitNmSec</GrepFindStr>
 			<GrepFindStr>panicMode</GrepFindStr>
 			<GrepFindStr>panicModeDuration</GrepFindStr>
 			<GrepFindStr>= ADVMACHINES_IVIGILATE</GrepFindStr>
@@ -132,6 +134,10 @@
 		</GrepReplaceWhat>
 	</Grep>
 	<FindStrings>
+		<Find>InitSleepCounter</Find>
+		<Find>RefreshSC</Find>
+		<Find>SC_TickWait</Find>
+		<Find>WaitNmSec</Find>
 		<Find>LED</Find>
 		<Find>dynamic</Find>
 		<Find>GetBatteryLife</Find>

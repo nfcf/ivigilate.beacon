@@ -104,8 +104,8 @@ static          UINT16 embc02_DownCountInUse_p;        // boolean on setting lim
 void Handle_Irq_Port1(void)
 {
    embc02_EventCount++;
-   panicMode = panicModeDuration;  // Used for ivigilate state machine only. 
-                                   // variables defined in statemachine.c
+   panicMode = 0;                  // Used for ivigilate state machine only. 
+   fallMode = alertModeDuration;   // variables defined in statemachine.c
 }
 
 /**
